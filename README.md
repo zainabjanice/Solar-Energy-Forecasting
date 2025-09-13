@@ -44,8 +44,31 @@ SolarVision addresses this by predicting solar output with high accuracy while o
    
 **Preprocessing:**
 
-After checking the missing values in the four datasets **Plant_1_Generation_Data**, **Plant_1_Weather_Sensor_Data**,  **Plant_2_Generation_Data**, **Plant_2_Weather_Sensor_Data** ,merging  **Plant_1_Generation_Data** with **Plant_1_Weather_Sensor_Data** and merging  **Plant_2_Generation_Data**, **Plant_2_Weather_Sensor_Data** , merge the two merged data 1 and 2 by columns date and Plant_ID, we have the total merged data, after this step we created the model data which holds the features columns; the set of feature and the target variable.
+After checking the missing values in the four datasets **Plant_1_Generation_Data**, **Plant_1_Weather_Sensor_Data**,  **Plant_2_Generation_Data**, **Plant_2_Weather_Sensor_Data** , merging  **Plant_1_Generation_Data** with **Plant_1_Weather_Sensor_Data** and merging  **Plant_2_Generation_Data**, **Plant_2_Weather_Sensor_Data** , merge the two merged data 1 and 2 by columns date and Plant_ID, we have the total merged data, after this step we created the model data which holds the features columns; the set of feature and the target variable.
 <p align="center">
   <img src="Figures/Capture d’écran 2025-09-12 174019.png" alt="Solar Forecast" width="500"/>
 </p>
 
+**Exploratory Data Analysis (EDA):**
+- **Distribution of Features:**
+  
+  <p align="center">
+  <img src="Figures/output.png" alt="Solar Forecast" width="600"/>
+</p>
+
+
+   *AMBIENT_TEMPERATURE*, we have a bell-shaped, but skewed to the right (long tail toward higher temps). Most common values are between 22°C and 28°C. Mean ~ 26.7°C: close to the center, but             skewed      by hotter days. Ambient temperature is mostly moderate, with occasional hotter values. Good spread, no extreme outliers.
+
+   *MODULE_TEMPERATURE*, we have a skewed right (long tail). Most common values are between 20°C and 30°C, but some modules reach up to 60°C. Mean ~ 31.9°C, pulled upward by high values. Module temperature is        often higher than ambient (as expected in solar panels). Important to check how this correlates with power output.
+
+   *IRRADIATION*, we have a very skewed: huge spike at 0, then spread between 0.1 and 1.0. Mean ~ 0.23, much lower than the max (1.2). Many records were taken at night or on very cloudy days (irradiance = 0).        This feature explains why power can often be near zero.
+
+   *DC_POWER*, we have a huge spike at 0, with some spread to higher power (mean ~1708). Suggests that many time points had no generation (night/clouds). Needs filtering: zero power at night should not bias           modeling.
+
+   *AC_POWER*, similar to DC power: spike at 0, then spread with mean ~275. Lower mean than DC (conversion losses). Pattern follows DC power as expected. Also affected by night values.
+
+<p align="center">
+  <img src="Figures/output1.png" alt="Solar Forecast" width="800"/>
+</p>
+
+   
