@@ -66,3 +66,11 @@ After checking the missing values in the four datasets **Plant_1_Generation_Data
 Ambient temperature: Median ~25.9°C (≈ histogram mean 26.7°C); most values lie between ~23–28°C with rare hot outliers above ~37°C, indicating a stable distribution with few very hot days.
 Module temperature: Median ~26.4°C; wider spread than ambient (~22–40°C) and outliers above ~65°C; panels typically operate around 25–40°C, but extreme heating occurs under high irradiance.
 Irradiation & Power: Irradiation median ~0.03 (mostly night/low sun); data mostly low values, with rare high irradiance. DC power median ~6 W (night values dominate the median) with a long tail to >14,000 W; AC power median ~3.5 W, heavily skewed with outliers up to 1400 W, reflecting conversion losses and prominent zero-night values.
+
+<p align="center">
+  <img src="Figures/output3.png" alt="Solar Forecast" width="800"/>
+</p>
+
+The four scatter plots show how AC power relates to ambient temperature, module temperature, irradiance, and DC power, with a Pearson correlation coefficient displayed on each subplot.
+Strong positive relationships are seen for irradiance (~0.885) and module temperature (~0.852), a substantial but weaker link for DC power (~0.749), and a moderate link for ambient temperature (~0.574).
+Correlation indicates linear associations (not causation); consider adding regression lines and R² to quantify explained variance and check for nonlinear patterns.
