@@ -57,18 +57,12 @@ After checking the missing values in the four datasets **Plant_1_Generation_Data
 </p>
 
 
-   *AMBIENT_TEMPERATURE*, we have a bell-shaped, but skewed to the right (long tail toward higher temps). Most common values are between 22°C and 28°C. Mean ~ 26.7°C: close to the center, but             skewed      by hotter days. Ambient temperature is mostly moderate, with occasional hotter values. Good spread, no extreme outliers.
-
-   *MODULE_TEMPERATURE*, we have a skewed right (long tail). Most common values are between 20°C and 30°C, but some modules reach up to 60°C. Mean ~ 31.9°C, pulled upward by high values. Module temperature is        often higher than ambient (as expected in solar panels). Important to check how this correlates with power output.
-
-   *IRRADIATION*, we have a very skewed: huge spike at 0, then spread between 0.1 and 1.0. Mean ~ 0.23, much lower than the max (1.2). Many records were taken at night or on very cloudy days (irradiance = 0).        This feature explains why power can often be near zero.
-
-   *DC_POWER*, we have a huge spike at 0, with some spread to higher power (mean ~1708). Suggests that many time points had no generation (night/clouds). Needs filtering: zero power at night should not bias           modeling.
-
-   *AC_POWER*, similar to DC power: spike at 0, then spread with mean ~275. Lower mean than DC (conversion losses). Pattern follows DC power as expected. Also affected by night values.
+   Ambient temperature is mostly moderate (22–28°C) with a right-skew (mean ~26.7°C) and no extreme outliers. Module temperature is also right-skewed (20–30°C most common; up to 60°C; mean ~31.9°C) and tends to exceed ambient, warranting correlation with power output. Irradiation shows a strong spike at 0 with most values 0.1–1.0 and a mean ~0.23, explaining frequent near-zero power; DC power has a large 0 spike (night/clouds, mean ~1708) requiring filtering, and AC power mirrors this pattern with a 0 spike and a mean ~275 due to conversion losses and night values.
 
 <p align="center">
   <img src="Figures/output1.png" alt="Solar Forecast" width="800"/>
 </p>
 
-   
+Ambient temperature: Median ~25.9°C (≈ histogram mean 26.7°C); most values lie between ~23–28°C with rare hot outliers above ~37°C, indicating a stable distribution with few very hot days.
+Module temperature: Median ~26.4°C; wider spread than ambient (~22–40°C) and outliers above ~65°C; panels typically operate around 25–40°C, but extreme heating occurs under high irradiance.
+Irradiation & Power: Irradiation median ~0.03 (mostly night/low sun); data mostly low values, with rare high irradiance. DC power median ~6 W (night values dominate the median) with a long tail to >14,000 W; AC power median ~3.5 W, heavily skewed with outliers up to 1400 W, reflecting conversion losses and prominent zero-night values.
