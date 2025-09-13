@@ -12,6 +12,7 @@ The rise of renewable energy has reshaped the way we think about electricity gen
 
 SolarVision was born from the vision of combining **cutting-edge AI** with **immersive 3D visualizations**, transforming complex solar data into an interactive experience. By blending deep learning predictions with intuitive dashboards and stunning Blender-rendered visuals, the project aims to **empower energy planners, engineers, and enthusiasts** to explore solar trends, anticipate fluctuations, and make informed decisions.  
 
+---
 ## The Problem
 Unreliable solar energy forecasting can lead to:
 - Grid instability  
